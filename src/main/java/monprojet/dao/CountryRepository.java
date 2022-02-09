@@ -15,6 +15,14 @@ import monprojet.entity.Country;
 public interface CountryRepository extends JpaRepository<Country, Integer> {
 
     /**
+     * Trouve un pays par son nom.
+     * Cette méthode sera automatiquement implémentée par Spring Data JPA.
+     * @param countryName
+     * @return La ville correspondant au nom fourni, ou null si pas trouvé.
+     */
+    public Country findByName(String countryName);
+
+    /**
      * Calculer la population totale d'un pays.
      * @param idDuPays l'identifiant du pays
      * @return sa population totale (en millions d'habitants)
