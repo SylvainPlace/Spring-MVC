@@ -1,28 +1,32 @@
 {{>header}}
 
-		<h1>Les Villes</h1>
-		{{! On appelle l'URL 'add' du contôleur }}
-		<a href='add'>Ajouter une ville</a>
-		{{! On affiche un éventuel message d'erreur }}
-		{{#message}}<h3>{{message}}</h3>{{/message}}				
-		<table>
-			<tr><th>Id</th><th>Nom</th><th>Population</th><th>Pays</th><th>Action</th></tr>
-			{{! Pour chaque ville dans la liste 'villes' transmise par le contrôleur }}
-			{{#villes}}
-				<tr>
-					{{! On affiche les informations de la ville }}
-					<td>{{id}}</td>
-					<td>{{name}}</td>
-					<td>{{population}}</td>
-					<td>{{country.name}}</td>
-					<td>
-						<a href='edit?id={{id}}'>Modifier</a> 
-						<a href='delete?id={{id}}'>Supprimer</a>
-					</td>
-				</tr>
-			{{/villes}}
-		</table>
-		<hr/>
-			
-	</body>
+<h1>Les Villes</h1>
+{{! On appelle l'URL 'add' du contôleur }}
+<a href='add'>Ajouter une ville</a> {{! On affiche un éventuel message d'erreur }} {{#message}}
+<h3>{{message}}</h3>{{/message}}
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+        <th>Population</th>
+        <th>Pays</th>
+        <th>Action</th>
+    </tr>
+    {{! Pour chaque ville dans la liste 'villes' transmise par le contrôleur }} {{#villes}}
+    <tr>
+        {{! On affiche les informations de la ville }}
+        <td>{{id}}</td>
+        <td>{{name}}</td>
+        <td>{{population}}</td>
+        <td>{{country.name}}</td>
+        <td>
+            <a href='edit?id={{id}}'>Modifier</a>
+            <a href='delete?id={{id}}'>Supprimer</a>
+        </td>
+    </tr>
+    {{/villes}}
+</table>
+<hr />
+
+</body>
 </html>

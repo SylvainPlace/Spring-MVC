@@ -14,19 +14,19 @@ import monprojet.entity.*;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 @Controller
-@RequestMapping(path = "/monprojet/city") 
+@RequestMapping(path = "/monprojet/city")
 public class CityController {
 
-    @Autowired
-    private CityRepository cityDao;
 	@Autowired
-    private CountryRepository countryDao;
+	private CityRepository cityDao;
+	@Autowired
+	private CountryRepository countryDao;
 
-    @GetMapping(path = "show")
+	@GetMapping(path = "show")
 	public String montreLesVilles(Model model) {
 		model.addAttribute("villes", cityDao.findAll());
 		return "showVilles";
-	}	
+	}
 
 	@GetMapping(path = "add")
 	public String montreLeFormulairePourAjout(@ModelAttribute("city") City city, Model model) {
@@ -38,12 +38,12 @@ public class CityController {
 		model.addAttribute("countries", countryDao.findAll());
 		return "formulaireVille";
 	}
-	
+
 	@PostMapping(path = "save")
 	public String ajouteLaVillePuisMontreLaListe(City city) {
 		// cf. https://www.baeldung.com/spring-data-crud-repository-save
 		cityDao.save(city);
-		return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste		
+		return "redirect:show"; // POST-Redirect-GET : on se redirige vers l'affichage de la liste
 	}
 
 	@GetMapping(path = "edit")
@@ -54,9 +54,9 @@ public class CityController {
 	}
 
 	@GetMapping(path = "delete")
-	public String supprimeUneVillePuisMontreLaListe(@RequestParam("id")  City city) {
+	public String supprimeUneVillePuisMontreLaListe(@RequestParam("id") City city) {
 		cityDao.delete(city);
 		return "redirect:show"; // on se redirige vers l'affichage de la liste
 	}
-    
+
 }
